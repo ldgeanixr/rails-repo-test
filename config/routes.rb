@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   root 'pages#home'
   get 'about', to: 'pages#about'
+  resources :articles # post, edit, patch, delete, show, index pathes will be given 
 end
