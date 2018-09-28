@@ -6,8 +6,20 @@ class ArticlesController < ApplicationController
 	def create
 		#render plain: params[:article].inspect #render plain text, params from view are passed as a params
 		@article = Article.new(article_params)
-		@article.save
-		redirect_to articles_show(@article)
+		# @article.save
+		# redirect_to article_path(@article)
+		# the above code may fail to pass the validation and will cause the error
+		if @article.save
+			flash[:notice] = "Article was successfully created"
+			redirect_to article_path(@article)
+		else
+			render 'new'
+		end
+
+	end
+
+	def show
+		@article = Article.find(params[:id])
 	end
 
 
