@@ -11,16 +11,30 @@ class ArticlesController < ApplicationController
 		# the above code may fail to pass the validation and will cause the error
 		if @article.save
 			flash[:notice] = "Article was successfully created"
-			redirect_to article_path(@article)
+			redirect_to article_path(@article) # redirect to show (not index because sth is being passed)
 		else
-			render 'new'
+			render 'new' # render the new template again
 		end
 
 	end
 
-	def show
+	def show # show action needs id articles/11 for example
 		@article = Article.find(params[:id])
 	end
+
+	def edit
+		@article = Article.find(params[:id])
+	end
+
+	def update
+		@article = Article.find(params[:id])
+		if @article.update(article_params)
+			flash[:notice] = "Article was successfully updated"
+		redirect_to article_path(@article) # so the message from flash, will be printed only after redirecting to the show page, and only once
+		else
+			render 'edit'
+		end
+	end 
 
 
 	private
