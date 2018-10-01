@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
 	
+	before_action :set_article, only: [:edit, :update, :show, :destroy] #only this 4 methods will call set_article
+
 	def index
 		@articles = Article.all #grab all the articles(plural for convenience)
 	end 
@@ -24,22 +26,22 @@ class ArticlesController < ApplicationController
 	end
 
 	def show # show action needs id articles/11 for example
-		@article = Article.find(params[:id])
+		#@article = Article.find(params[:id])
 	end
 
 	def destroy
-		@article = Article.find(params[:id])
+		#@article = Article.find(params[:id])
 		@article.destroy
 		flash[:notice] = "Article was successfully destroyed"
 		redirect_to articles_path
 	end
 
 	def edit
-		@article = Article.find(params[:id])
+		#@article = Article.find(params[:id])
 	end
 
 	def update
-		@article = Article.find(params[:id])
+		#@article = Article.find(params[:id])
 		if @article.update(article_params) # if it was able to get updated params from the edit.html.erb
 			flash[:notice] = "Article was successfully updated"
 		redirect_to article_path(@article) # so the message from flash, will be printed only after redirecting to the show page, and only once
@@ -50,6 +52,9 @@ class ArticlesController < ApplicationController
 
 
 	private
+		def set_article
+			@article = Article.find(params[:id])
+		end
 
 		def article_params
 			params.require(:article).permit(:title, :description)
