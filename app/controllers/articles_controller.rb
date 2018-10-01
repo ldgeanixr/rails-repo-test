@@ -1,4 +1,9 @@
 class ArticlesController < ApplicationController
+	
+	def index
+		@articles = Article.all #grab all the articles(plural for convenience)
+	end 
+
 	def new
 		@article = Article.new
 	end
@@ -28,7 +33,7 @@ class ArticlesController < ApplicationController
 
 	def update
 		@article = Article.find(params[:id])
-		if @article.update(article_params)
+		if @article.update(article_params) # if it was able to get updated params from the edit.html.erb
 			flash[:notice] = "Article was successfully updated"
 		redirect_to article_path(@article) # so the message from flash, will be printed only after redirecting to the show page, and only once
 		else
