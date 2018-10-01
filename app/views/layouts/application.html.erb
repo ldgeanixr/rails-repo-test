@@ -10,12 +10,7 @@
   </head>
 
   <body>
-    <% flash.each do |name, msg| %> <!-- for flash if article is created successfully, designed to stay for only one redirect cycle -->
-    <ul>
-      <li><%= msg %></li>
-    </ul>
-
-    <% end %>
+    <%= render "layouts/messages" %> <!-- by default it look in articles folder -->
     <%= yield %>
   </body>
 </html>
