@@ -10,7 +10,11 @@
   </head>
 
   <body>
+    <%= render "layouts/navigation" %>
     <%= render "layouts/messages" %> <!-- by default it look in articles folder -->
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>  
+    <%= render 'layouts/footer' %>
   </body>
 </html>
