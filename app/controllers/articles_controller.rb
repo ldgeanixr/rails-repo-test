@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
 		# redirect_to article_path(@article)
 		# the above code may fail to pass the validation and will cause the error
 		if @article.save
-			flash[:notice] = "Article was successfully created"
+			flash[:success] = "Article was successfully created"
 			redirect_to article_path(@article) # redirect to show (not index because sth is being passed)
 		else
 			render 'new' # render the new template again
@@ -32,7 +32,7 @@ class ArticlesController < ApplicationController
 	def destroy
 		#@article = Article.find(params[:id])
 		@article.destroy
-		flash[:notice] = "Article was successfully destroyed"
+		flash[:danger] = "Article was successfully destroyed"
 		redirect_to articles_path
 	end
 
@@ -43,7 +43,7 @@ class ArticlesController < ApplicationController
 	def update
 		#@article = Article.find(params[:id])
 		if @article.update(article_params) # if it was able to get updated params from the edit.html.erb
-			flash[:notice] = "Article was successfully updated"
+			flash[:success] = "Article was successfully updated"
 		redirect_to article_path(@article) # so the message from flash, will be printed only after redirecting to the show page, and only once
 		else
 			render 'edit'

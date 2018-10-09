@@ -1,15 +1,7 @@
 
 <!-- to avoid repetition -->
 
-<% if @article.errors.any? %>  <!-- if article is not getting created, display the errors	-->
-<h2>The following errors prevented the article from getting created</h2>
-<ul>
-	<% @article.errors.full_messages.each do |msg| %>
-<li><%= msg %></li> <!-- li tag because you might have several errors -->
-</ul>
-
-	<% end %>
-<% end %>
+<%= render 'shared/errors', obj: @article %>
 
 <div class="row">
 	  <div class="cold-xs-12"> <!-- to spent entire length (all 12 columns) -->
