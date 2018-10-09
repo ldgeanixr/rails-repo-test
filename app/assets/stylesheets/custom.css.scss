@@ -41,8 +41,9 @@ $navbar-default-bg: black;
 }
 
 footer {
-	maring-top: 45px;
+	margin-top: 45px;
 	padding-top: 5px;
+	padding-left: 20px;
 	border-top: 1px solid #eaeaea;
 	color: #777;
 }
@@ -63,4 +64,5 @@ footer ul{
 footer ul li{
 	float: left;
 	margin-left: 15px;
+	padding-right: 20px;
 }
